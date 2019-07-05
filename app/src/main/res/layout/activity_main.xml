@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/map_values_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:onClick="mapBoundingBoxesText"
+        android:text="Map Values" />
+
+    <Button
+        android:id="@+id/get_encodings_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:onClick="launchEncodingAsyncTask"
+        android:text="Get encodings" />
+
+    <Button
+        android:id="@+id/generate_clusters_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:onClick="performClustering"
+        android:text="Generate Clusters" />
+
+    <Button
+        android:id="@+id/view_clusters_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="View Clusters" />
+
+    <TextView
+        android:id="@+id/progress_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/profiling_info"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:background="@color/colorGridBackground"/>
+
+    <TextView
+        android:id="@+id/bbx_info_textView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:text="@string/default_main_text_view" />
+
+</LinearLayout>

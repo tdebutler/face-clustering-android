@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGridBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/rename_cluster"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:hint="new name"
+            android:scrollHorizontally="false"
+            android:maxLines="1"
+            android:lines="1"
+            android:singleLine="true"
+            android:nextFocusUp="@id/rename_cluster"
+            android:nextFocusLeft="@id/rename_cluster"
+            />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="renameCluster"
+            android:text="Label Cluster" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/gallery_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+    <!--    android:layout_below="@id/rename_cluster" -->
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

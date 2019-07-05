@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Face Clustering App</string>
+    <string name="images_total">Size of dataset : </string>
+    <string name="default_main_text_view">No data. Use Face Detection app first.</string>
+    <string name="cluster_name">Name</string>
+    <string name="profiling_info">Profiling info</string>
+</resources>
