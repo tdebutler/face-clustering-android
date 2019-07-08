@@ -1,16 +1,10 @@
-*.iml
 .gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /captures
-.externalNativeBuild
+
 ### Android template
 # Built application files
 *.apk
@@ -94,4 +88,3 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
-
