@@ -1,10 +1,17 @@
 package com.debutler.clustering_dbscan_dlib;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -39,6 +46,7 @@ import dbscan.metrics.DistanceMetricEncodings;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private static final int REQUEST_CODE = 2;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -76,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
             viewClustersIntent.putExtra("nb_of_clusters",faceDataClusters.size());
             startActivity(viewClustersIntent);
         });
+
+        verifyPermissions();    // verifying if access to external storage is granted
 
         // Get intent, action and MIME type
         Intent intent = getIntent();
@@ -249,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
         if (areEncodingsReady) {
             long startTime = System.nanoTime(); // profiling purposes
             try {
-                double maxDistance = 0.5;
+                double maxDistance = 0.42;
                 int minNumElements = 2;
                 // DBSCAN Clusterer Instance from DBSCAN Library
                 mDBSCANClusterer = new DBSCANClusterer<>(encodingsToCluster, minNumElements, maxDistance, mMetric);
@@ -331,6 +341,27 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.e(TAG, "findCorrespondingFace: no corresponding face found");
         return null;
+    }
+
+
+    /** checks if the app has access to external storage at startup. */
+    private void verifyPermissions(){
+        Log.d(TAG, "verifyPermissions: asking user for permissions");
+        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[1]) == PackageManager.PERMISSION_GRANTED){
+            Log.d(TAG, "verifyPermissions: permission already granted.");
+        } else {
+            ActivityCompat.requestPermissions(MainActivity.this, permissions, REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        verifyPermissions();
     }
 
 
