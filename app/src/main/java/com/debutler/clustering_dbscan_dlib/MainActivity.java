@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
         if (areEncodingsReady) {
             long startTime = System.nanoTime(); // profiling purposes
             try {
-                double maxDistance = 0.43; // Maximum distance of elements to consider clustered
+                double maxDistance = 0.45; // Maximum distance of elements to consider clustered
                 int minNumElements = 2; // Minimum number of elements to constitute cluster
                 // DBSCAN Clusterer Instance from DBSCAN Library
                 mDBSCANClusterer = new DBSCANClusterer<>(encodingsToCluster, minNumElements, maxDistance, mMetric);
